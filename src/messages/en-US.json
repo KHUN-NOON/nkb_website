@@ -1,0 +1,36 @@
+{
+    "DocTitle": {
+        "title": "Ngwe Ka Bar"
+    },
+    "HeaderNav": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact",
+        "businesses": "Businesses"
+    },
+    "Home": {
+
+    },
+    "About": {
+        "title": "About"
+    },
+    "Contact": {
+        "title": "Contact"
+    },
+    "Businesses": {
+        "NavTitle": {
+            "resort": "Nature Resort",
+            "milling": "Milling",
+            "trading": "Trading"
+        },
+        "Resort": {
+            "title": "Silver World Natrue Resort"
+        },
+        "Milling": {
+            "title": "Ngwe Ka Bar Mill"
+        },
+        "Trading": {
+            "title": "Ngwe Ka Bar Trading"
+        } 
+    }
+}
