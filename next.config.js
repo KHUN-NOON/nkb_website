@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   i18n: {
     locales: ['en-US', 'mm'],
-    defaultLocale: 'en-US'
+    defaultLocale: 'en-US',
+    localeDetection: false
   },
   images: {
     remotePatterns: [
@@ -11,6 +12,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.pexels.com',
         port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent-sin6-2.xx.fbcdn.net'
       }
     ]
   }

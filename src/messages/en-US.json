@@ -9,13 +9,42 @@
         "businesses": "Businesses"
     },
     "Home": {
-
+        "meta": {
+            "keywords": "Ngwe Ka Bar, Silver World, Silver World Resort, Ngwe Ka Bar Milling, Ngwe Ka Bar Trading",
+            "description": "Welcome To NGWE KA BAR"
+        },
+        "HeroSection": {
+            "title": "Welcome To NGWE KA BAR",
+            "explore_more": "Explore More"
+        },
+        "QuickNavigation": {
+            "title": "Our Businesses",
+            "navCard": {
+                "resort": "Nature Resort",
+                "mill": "Rice Mill",
+                "trading": "Trading"
+            }
+        }
     },
     "About": {
-        "title": "About"
+        "title": "About NGWE KA BAR"
     },
     "Contact": {
-        "title": "Contact"
+        "title": "Contact",
+        "meta": {
+            "description": ""
+        },
+        "Info": {
+            "title": "Contact",
+            "sub_title": "Visit our office at",
+            "phone_label": "PHONE",
+            "email_label": "EMAIL",
+            "address_label": "ADDRESS",
+            "visit_info": "Office visits and inquiries are welcome during regular office hours, from 8:00 am to 5:00 pm, Monday through Sunday, with no scheduled off days. To Ensure a seamless experience, we recommand calling ahead before your office visit.",
+            "phone": ["+95944443880", "+95978868898"],
+            "email": "ngwekabar.business@gmail.com",
+            "address": "210 Shwe Laung St Kone Hlaing Qtr Shwe Nyanung"
+        }
     },
     "Businesses": {
         "NavTitle": {
