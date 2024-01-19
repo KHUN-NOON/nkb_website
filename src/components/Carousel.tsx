@@ -29,7 +29,7 @@ const Carousel = (props: CarouselTypes) => {
         setTimeout(() => {
             setSlideIndex(slideIndex + 1)
         }, 9500)
-    }, [slideIndex])
+    }, [slideIndex, images.length])
 
     const handleImageError = (event: React.SyntheticEvent<HTMLImageElement>, fallbackUrl?: string) => {
         event.currentTarget.src = fallbackUrl ?? 'e'
@@ -37,14 +37,14 @@ const Carousel = (props: CarouselTypes) => {
 
     useEffect(() => {
         showSlides(slideIndex)
-    }, [slideIndex])
+    }, [slideIndex, showSlides])
 
     return (
         <div className="w-[100vw] m-auto overflow-hidden">
             {
                 images.map((el, index) => (
                     <div key={el.url} className={`animate-carousel-zoom-fade ${ slideIndex === index + 1 ? 'block' : 'hidden' }`}>
-                        <img src={el.url} className="w-full h-[92.5vh] object-cover object-center" onError={(event) => handleImageError(event, el.fallback)}/>
+                        <img alt={`${el.url}`} src={el.url} className="w-full h-[92.5vh] object-cover object-center" onError={(event) => handleImageError(event, el.fallback)}/>
                     </div>
                 ))
             }

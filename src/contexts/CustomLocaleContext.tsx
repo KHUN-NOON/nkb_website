@@ -42,7 +42,7 @@ export const CustomLocaleProvider: FC<childrenType> = ({children}) => {
         return () => {
             window.removeEventListener('storage', storageEventHandler)
         }
-    }, [router])
+    }, [router, locale])
 
     return (
         <CustomLocaleContext.Provider value={{ lang, setLang, greet }}>

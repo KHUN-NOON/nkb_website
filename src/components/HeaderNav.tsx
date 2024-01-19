@@ -19,6 +19,7 @@ const HeaderNav = () => {
                 <motion.div className="flex-1 justify-self-center" whileHover={{ scale: 1.25 }} transition={{ duration: 0.5 }}>
                     <Link href='/'>
                         <img 
+                            alt="site-icon"
                             src="/icons/site/Ngwe Ka Bar-logos_black.png" 
                             className={`w-[50px]`}
                         />
