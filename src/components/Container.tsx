@@ -16,7 +16,7 @@ const Container = ({ children }: TContainer) => {
     return (
         <main  
             className={`
-                bg-slate-50 flex flex-col paddingjustify-center items-center min-h-screen ${inter.className} font-sans
+                bg-slate-50 flex flex-col paddingjustify-center items-center min-h-screen w-screen ${inter.className} font-sans
             `}
         >
             {children}

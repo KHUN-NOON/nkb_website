@@ -1,15 +1,12 @@
 import { useState } from "react"
 import Link from "next/link"
 import { FaBars, FaCaretDown, FaX } from "react-icons/fa6"
-import { Raleway } from "next/font/google"
 import { createTranslator } from "next-intl"
 import { langTypes } from "@/types/lang.types"
 import { useRouter } from "next/router"
 import useCustomLocale from "@/hooks/useCustomLocale"
-
-const raleway = Raleway({
-    subsets: ['latin']
-})
+import ArrowRight from "./SvgIcons/ArrowRight"
+import { motion } from "framer-motion"
 
 const HeaderNav = () => {
 
@@ -19,11 +16,14 @@ const HeaderNav = () => {
                 <div className="flex-1 justify-self-start">
                     <NavList/>
                 </div>
-                <div className="flex-1 justify-self-center hover:scale-125">
+                <motion.div className="flex-1 justify-self-center" whileHover={{ scale: 1.25 }} transition={{ duration: 0.5 }}>
                     <Link href='/'>
-                        <p className={`text-slate-700 text-2xl ${raleway.className} font-semibold font-sans`}>NKB</p>
+                        <img 
+                            src="/icons/site/Ngwe Ka Bar-logos_black.png" 
+                            className={`w-[50px]`}
+                        />
                     </Link>
-                </div>
+                </motion.div>
                 <div className="flex-1 justify-self-end">
                     <LanguageChanger/>
                 </div>
@@ -35,8 +35,20 @@ const HeaderNav = () => {
 const NavList = () => {
     const messages = useCustomLocale()
 
+    const router = useRouter()
+
     const t = createTranslator({locale: 'en-US', messages, namespace: 'HeaderNav'})
     const tMenu = createTranslator({locale: 'en-US', messages, namespace: 'Businesses.NavTitle'})
+
+    const businessRouteActive = (path: string) => {
+        const originalClasses = 'block px-4 py-2 hover:bg-gray-100 font-medium'
+
+        if ( router.asPath === path ) {
+            return originalClasses.concat(" ", "bg-gray-100 text-slate-400")
+        } else {
+            return originalClasses
+        }
+    }
 
     return (
         <>
@@ -55,6 +67,7 @@ const NavList = () => {
                         {t('businesses')} 
                         <FaCaretDown/>
                     </button>
+                    <NavActiveDot path="/businesses"/>
                     <div 
                         id="dropdownHover"
                         className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-lg w-44 transform delay-150 scale-0 group-hover:scale-100 absolute 
@@ -70,18 +83,18 @@ const NavList = () => {
                         >
                             <li>
                                 <Link href="/businesses/resort" 
-                                    className="block px-4 py-2 hover:bg-gray-100 font-medium"
+                                    className={`${businessRouteActive('/businesses/resort')}`}
                                 >
                                     {tMenu('resort')}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/businesses/milling" className="block px-4 py-2 hover:bg-gray-100 font-medium">
+                                <Link href="/businesses/milling" className={`${businessRouteActive('/businesses/milling')}`}>
                                     {tMenu('milling')}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/businesses/trading" className="block px-4 py-2 hover:bg-gray-100 font-medium">
+                                <Link href="/businesses/trading" className={`${businessRouteActive('/businesses/trading')}`}>
                                     {tMenu('trading')}
                                 </Link>
                             </li>
@@ -106,10 +119,10 @@ const NavList = () => {
 const NavActiveDot = (props: { path: string }) => {
     const router = useRouter()
 
-    if ( router.asPath === props.path ) {
+    if ( router.asPath.includes(props.path ) ) {
         return (
             <p className="absolute w-[100%] h-[100%]">
-                <span className="absolute rounded-full left-[50%] translate-x-50 bg-black content-none w-1 h-1"></span>
+                <span className="absolute rounded-full left-[50%] translate-x-50 top-1.5 bg-orange-400 content-none w-1 h-1"></span>
             </p>
         )
     }
@@ -125,6 +138,7 @@ const NavListSideBar = () => {
     const messages = useCustomLocale()
 
     const t = createTranslator({locale: 'en-US', messages, namespace: 'HeaderNav'}) 
+    const tBusinessNav = createTranslator({locale: 'en-US', messages, namespace: 'Businesses.NavTitle'})
 
     const toggleSidebar = () => {
         setOpen(!open)
@@ -141,7 +155,7 @@ const NavListSideBar = () => {
     }
 
     return (
-        <div className="sm:hidden">
+        <div className="sm:hidden relative z-10">
             <button
                 onClick={toggleSidebar}
                 aria-label="menu button"
@@ -156,9 +170,9 @@ const NavListSideBar = () => {
                 </p>
             </button>
             <div 
-                className={`fixed w-[100%] left-0 top-0 z-100 backdrop-blur h-full min-h-screen ${sidebarOpenCss}`}
+                className={`fixed w-[100%] left-0 top-0 backdrop-blur h-full ${sidebarOpenCss}`}
             >
-                <div className="w-4/5 bg-white h-screen py-3 px-4 overflow-auto">
+                <div className={`w-4/5 bg-white h-screen py-3 px-4 overflow-auto`}>
                     <div className="flex w-auto justify-end">
                         <button
                             onClick={toggleSidebar} 
@@ -167,7 +181,7 @@ const NavListSideBar = () => {
                             <FaX/>
                         </button>
                     </div>
-                    <ul className="text-black text-sm">
+                    <ul className="text-black text-sm flex flex-col gap-2">
                         <li>
                             <Link href="/" 
                                 className={`block p-2 font-medium ${activeNav('/')}`}
@@ -175,6 +189,35 @@ const NavListSideBar = () => {
                             >
                                 {t('home')}
                             </Link>
+                        </li>
+                        <li>
+                            <details className="group" open={ router.asPath.includes('businesses')}>
+                                <summary className="flex items-center justify-between gap-2 font-medium marker:content-none hover:cursor-pointer">
+                                    <span className="flex gap-2">
+                                        <span className="block p-2 font-medium">Businesses</span>
+                                    </span>
+                                    <ArrowRight/>
+                                </summary>
+                                <article className="px-4 pb-4">
+                                    <ul className="flex flex-col gap-2 pl-1 mt-1">
+                                        <li>
+                                            <Link href="/businesses/resort" className={`block p-2 font-medium ${activeNav('/businesses/resort')}`}>
+                                                {tBusinessNav('resort')}
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/businesses/milling" className={`block p-2 font-medium ${activeNav('/businesses/milling')}`}>
+                                                {tBusinessNav('milling')}
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/businesses/trading" className={`block p-2 font-medium ${activeNav('/businesses/trading')}`}>
+                                                {tBusinessNav('trading')}
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </article>
+                            </details>
                         </li>
                         <li>
                             <Link href="/contact" className={`block p-2 font-medium ${activeNav('/contact')}`} onClick={toggleSidebar}>
@@ -196,8 +239,14 @@ const NavListSideBar = () => {
 const LanguageChanger = () => {
     const { locale, push, asPath } = useRouter()
 
+    const setCookie = (locale?: string, path?: string) => {
+        document.cookie = `NEXT_LOCALE=${locale}; max-age=31536000;`
+    }
+
     const switchLang = (lang: langTypes) => {
         push(asPath, undefined, { locale: lang })
+
+        setCookie(lang, asPath)
     }
 
     const activeCss = (lang: langTypes) => {
