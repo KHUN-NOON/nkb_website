@@ -27,7 +27,17 @@
         }
     },
     "About": {
-        "title": "About NGWE KA BAR"
+        "title": "About NGWE KA BAR",
+        "overview": {
+            "title": "Overview",
+            "sub_title": "Choose The Best Business Partner In The Southern Shan State ",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        },
+        "profiles": [
+            { "name": "Ko Phoe Zaw", "position": "Business Owner", "profileUrl": "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { "name": "Ko Nay", "position": "Finance Manager", "profileUrl": "https://images.pexels.com/photos/1559486/pexels-photo-1559486.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" },
+            { "name": "Ma Phoo", "position": "Mill Production Manager", "profileUrl": "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" }
+        ]
     },
     "Contact": {
         "title": "Contact",

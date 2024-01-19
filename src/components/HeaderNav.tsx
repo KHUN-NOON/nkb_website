@@ -6,6 +6,7 @@ import { langTypes } from "@/types/lang.types"
 import { useRouter } from "next/router"
 import useCustomLocale from "@/hooks/useCustomLocale"
 import ArrowRight from "./SvgIcons/ArrowRight"
+import { motion } from "framer-motion"
 
 const HeaderNav = () => {
 
@@ -15,14 +16,14 @@ const HeaderNav = () => {
                 <div className="flex-1 justify-self-start">
                     <NavList/>
                 </div>
-                <div className="flex-1 justify-self-center hover:scale-125">
+                <motion.div className="flex-1 justify-self-center" whileHover={{ scale: 1.25 }} transition={{ duration: 0.5 }}>
                     <Link href='/'>
                         <img 
                             src="/icons/site/Ngwe Ka Bar-logos_black.png" 
                             className={`w-[50px]`}
                         />
                     </Link>
-                </div>
+                </motion.div>
                 <div className="flex-1 justify-self-end">
                     <LanguageChanger/>
                 </div>
